@@ -22,7 +22,7 @@ class GameDetailsActivity : AppCompatActivity() {
 
         val game = intent.getSerializableExtra("GAME") as Game
         tv_game_name.text = game.nomeJogo
-        tv_game_price.text = "R$" + game.preco.toString()
+        tv_game_price.text = "R$" + "%.2f".format(game.preco).replace(".", ",")
         tv_game_plataform.text = game.plataforma
         tv_game_description.text = game.descricao
 

@@ -9,7 +9,6 @@ import br.com.smartgames.R
 import br.com.smartgames.entities.Game
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.game_item.view.*
-import java.text.DecimalFormat
 
 class GamesAdapter(private val gameClickListener: GameClickListener) : RecyclerView.Adapter<GamesViewHolder>() {
 
