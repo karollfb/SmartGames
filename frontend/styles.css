@@ -1,0 +1,36 @@
+body{
+    background-color: rgb(255, 255, 255);
+}
+
+.card{
+    float: left;
+    margin-left:50px;
+    margin-top: 50px;
+    border: 4px solid rgb(58, 226, 255);
+}
+
+#container_text_principal{
+    width: auto;
+    height: 60px;
+    padding-left: 100px;
+    margin-top: 50px;
+    margin-bottom: -20px;
+
+    font-weight: bold;
+    color: rgb(20, 0, 75);
+    font-size: 24px;
+}
+
+#border_text{
+    width: 90%;
+    height: 2px;
+    background-color: black;
+    margin-top: 10px;
+    margin-left: 80px;
+}
+
+#container_footer{
+    width: auto;
+    height: 200px;
+    background-color: black;
+}

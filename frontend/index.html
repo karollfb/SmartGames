@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+    <html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="styles.css">
+        <title>Smart Games</title>
+    </head>
+
+    <body>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script>
+            $(function(){
+                $(".btn").click(function(){
+                    $(".modal").modal();
+                });
+            });
+ 
+            const req = fetch("http://localhost:3001/lojas/jogos", { method: "GET" })
+                .then(response => response.json())
+                .then(jogos => {
+                    const div = document.getElementById("content")
+
+                    jogos.forEach(jogo => {
+                        
+                        div.innerHTML += `    
+                            <div id="container">
+                                <div class="card" style="width: 310px; height: 580px; margin-bottom: 10px; margin-left: 65px;">
+                                    <img src="http://localhost:3001/images/${jogo.foto}" class="card-img-top" alt="..." height="320px">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${jogo.nomeJogo}</h5>
+                                        <h5 class="card-title">${jogo.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</h5>
+                                        <h5 class="card-text">${jogo.plataforma}</h5>
+                                        <p class="card-text">${jogo.bairro}</p>
+                                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#${jogo.id}">
+                                            Ver Detalhes do Jogo
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal" tabindex="-1" style="display:none;" id="${jogo.id}">
+                                <div class="modal-dialog modal-xl">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">${jogo.nomeJogo}</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div>
+                                                <iframe width="750px" height="550px" style="margin-left:15px" src="${jogo.video}"></iframe>
+                                                <iframe width="300px" height="550px" style="margin-left:20px" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAJtNvXknHzpykLAxgECr_jrDyJX81Hi9Q&q=${jogo.rua} ${jogo.numero}, ${jogo.bairro}, ${jogo.cidade}" allowfullscreen="">
+                                                </iframe>
+                                            </div>
+                                            <p style="font-size:14px; text-align:justify; padding:20px">${jogo.descricao}</p>
+                                            <button type="button" class="btn btn-outline-success" style="margin-left:20px">${jogo.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</button>
+                                            <button type="button" class="btn btn-outline-dark" style="margin-left:10px">${jogo.plataforma}</button>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                                            <button type="button" class="btn btn-info">Comprar Online</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        `
+                    })
+                })
+                
+
+        </script>
+
+        <div id="content">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid" style="margin-left: 50px;">
+                  <a class="navbar-brand" href="#">
+                    <img src="images/icon_toad.png" alt="" width="40" height="38" style="margin-right: 10px;" class="d-inline-block align-top">
+                  </a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                      <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Categórias</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Lojas</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Suporte</a>
+                      </li>
+                      
+                    </ul>
+                    <form class="d-flex" style="margin-left: 850px;">
+                        <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Search">
+                        <button type="button" class="btn btn-outline-info" style="margin-left: 10px;">
+                            <img src="images/icon_search.png" alt="" width="20" height="20">
+                        </button>
+                      </form>
+                  </div>
+                </div>
+              </nav>
+
+              <div id="container_text_principal">
+                <p class="text-start">Jogos em Destaque</p>
+              </div>
+              <div id="border_text"></div>
+        </div>
+        
+    </body>
+    
+</html>
