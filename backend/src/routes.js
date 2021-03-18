@@ -27,6 +27,6 @@ router.get("/lojas", lojasController.getAll)
 router.post("/lojas", lojasController.create)
 router.get("/lojas/jogos", lojasController.getGames)
 router.post("/lojas/jogos", lojasController.createGame)
-router.post("/pedidos", pedidoController.novoPedido)
+router.post("/pedidos", pedidoController.newOrder)
 
 module.exports = router

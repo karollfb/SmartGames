@@ -1,10 +1,8 @@
 const express = require('express')
 const cors = require('cors')
 
-// Router com as rotas da API
 const router = require("./routes")
 
-// Criando a instância do express
 const app = express()
 const port = 3001 
 

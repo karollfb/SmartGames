@@ -12,12 +12,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
         <script>
-            $(function(){
-                $(".btn").click(function(){
-                    $(".modal").modal();
-                });
-            });
- 
             const req = fetch("http://localhost:3001/lojas/jogos", { method: "GET" })
                 .then(response => response.json())
                 .then(jogos => {
@@ -42,7 +36,7 @@
                             </div>
                             <div class="modal" tabindex="-1" style="display:none;" id="${jogo.id}">
                                 <div class="modal-dialog modal-xl">
-                                    <div class="modal-content">
+                                    <div class="modal-content" style="height:900px">
                                         <div class="modal-header">
                                             <h5 class="modal-title">${jogo.nomeJogo}</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -58,18 +52,15 @@
                                             <button type="button" class="btn btn-outline-dark" style="margin-left:10px">${jogo.plataforma}</button>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                                            <button type="button" class="btn btn-info">Comprar Online</button>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="margin-top:-7px">Voltar</button>
+                                            <button type="button" class="btn btn-info" style="margin-top:-7px">Comprar Online</button>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            
+                            </div>   
                         `
                     })
                 })
-                
-
         </script>
 
         <div id="content">
@@ -102,7 +93,7 @@
                         <button type="button" class="btn btn-outline-info" style="margin-left: 10px;">
                             <img src="images/icon_search.png" alt="" width="20" height="20">
                         </button>
-                      </form>
+                    </form>
                   </div>
                 </div>
               </nav>
@@ -112,7 +103,5 @@
               </div>
               <div id="border_text"></div>
         </div>
-        
-    </body>
-    
+    </body> 
 </html>

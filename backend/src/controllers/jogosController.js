@@ -1,14 +1,5 @@
-const mysql = require('mysql2')
+const connection = require("../database/connection")
 
-// Conexão do banco de dados
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'Yuki-kun051118',
-    database: 'db_jogos'
-})
-
-// Exporta as funções que vão ser utilizadas nas rotas da API
 module.exports = {
 
     getAll(req, res) {
@@ -18,10 +9,6 @@ module.exports = {
 
             return res.json(results)
         })
-    },
-
-    getById(req, res) {
-    
     },
 
     create(req, res) {
